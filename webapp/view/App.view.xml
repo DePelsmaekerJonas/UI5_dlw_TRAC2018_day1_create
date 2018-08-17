@@ -9,7 +9,8 @@
 						<f:content>
 							<Label text="{i18n>Common.Customer}"/>
 							<ComboBox
-								items="{/Customers}">
+								items="{/Customers}"
+								change="onCustomerComboBoxChange">
 								<core:ListItem key="{CustomerID}" text="{CompanyName}" />
 							</ComboBox>
 						</f:content>
@@ -18,14 +19,19 @@
 						<f:content>
 							<Label text="{i18n>Common.Material}"/>
 							<ComboBox
-								items="{/Products}">
+								items="{/Products}"
+								change="onMaterialComboBoxChange">
 								<core:ListItem key="{ProductID}" text="{ProductName}" />
 							</ComboBox>
 							<Label text="{i18n>Common.Quantity}"/>
-							<StepInput min="0"/>
+							<StepInput min="0" value="{itemModel>/Quantity}"/>
+							<Label/>
+							<Button
+								press="onAddItemButtonPress"
+								text="{i18n>Page.Form.Button.AddItem}"/>
 						</f:content>
 					</f:SimpleForm>
-					<Table>
+					<Table items="{itemsModel>/}" id="idItemsTable">
 						<columns>
 							<Column>
 								<Text text="{i18n>Common.Item}"/>
@@ -37,6 +43,15 @@
 								<Text text="{i18n>Common.Quantity}"/>
 							</Column>
 						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<ObjectIdentifier title="{itemsModel>Item}"/>
+									<Text text="{itemsModel>MaterialDesc}"/>
+									<Text text="{itemsModel>Quantity}"/>
+								</cells>
+							</ColumnListItem>
+						</items>
 					</Table>
 				</content>
 				<footer>
@@ -44,7 +59,8 @@
 						<ToolbarSpacer/>
 						<Button
 							type="Accept"
-							text="{i18n>Page.Button.CreateOrder}"/>
+							text="{i18n>Page.Button.CreateOrder}"
+							press="onCreateOrderBtnPress"/>
 					</Toolbar>
 				</footer>
 			</Page>
