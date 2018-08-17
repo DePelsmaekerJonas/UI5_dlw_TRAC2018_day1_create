@@ -1,9 +1,52 @@
 <mvc:View controllerName="com.jonasdp.trac2018.createsalesorder.UI5_dlw_TRAC2018_day1_create.controller.App"
-	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m" xmlns:f="sap.ui.form">
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m" xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core">
 	<App id="idAppControl">
 		<pages>
 			<Page title="{i18n>Page.Header.Title.CreateSalesOrder}">
-				<content></content>
+				<content>
+					<f:SimpleForm title="{i18n>Common.Customer}" editable="true">
+						<f:content>
+							<Label text="{i18n>Common.Customer}"/>
+							<ComboBox
+								items="{/Customers}">
+								<core:ListItem key="{CustomerID}" text="{CompanyName}" />
+							</ComboBox>
+						</f:content>
+					</f:SimpleForm>
+					<f:SimpleForm title="{i18n>Common.Item}" editable="true">
+						<f:content>
+							<Label text="{i18n>Common.Material}"/>
+							<ComboBox
+								items="{/Products}">
+								<core:ListItem key="{ProductID}" text="{ProductName}" />
+							</ComboBox>
+							<Label text="{i18n>Common.Quantity}"/>
+							<StepInput min="0"/>
+						</f:content>
+					</f:SimpleForm>
+					<Table>
+						<columns>
+							<Column>
+								<Text text="{i18n>Common.Item}"/>
+							</Column>
+							<Column>
+								<Text text="{i18n>Common.Material}"/>
+							</Column>
+							<Column>
+								<Text text="{i18n>Common.Quantity}"/>
+							</Column>
+						</columns>
+					</Table>
+				</content>
+				<footer>
+					<Toolbar>
+						<ToolbarSpacer/>
+						<Button
+							type="Accept"
+							text="{i18n>Page.Button.CreateOrder}"/>
+					</Toolbar>
+				</footer>
 			</Page>
 		</pages>
 	</App>

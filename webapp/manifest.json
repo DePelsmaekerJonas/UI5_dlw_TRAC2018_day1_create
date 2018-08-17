@@ -74,7 +74,8 @@
 				"settings": {
 					"defaultOperationMode": "Server",
 					"defaultBindingMode": "OneWay",
-					"defaultCountMode": "Request"
+					"defaultCountMode": "Request",
+					"useBatch": false
 				},
 				"dataSource": "Northwind.svc",
 				"preload": true
