@@ -1,0 +1,10 @@
+<mvc:View controllerName="com.jonasdp.trac2018.createsalesorder.UI5_dlw_TRAC2018_day1_create.controller.App"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m" xmlns:f="sap.ui.form">
+	<App id="idAppControl">
+		<pages>
+			<Page title="{i18n>Page.Header.Title.CreateSalesOrder}">
+				<content></content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
