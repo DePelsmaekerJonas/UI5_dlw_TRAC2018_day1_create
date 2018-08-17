@@ -28,8 +28,9 @@ sap.ui.define([
 		},
 		
 		onMaterialComboBoxChange: function(oEvent){
-			var sMatId = oEvent.getSource().getSelectedItem().getBindingContext().getProperty("ProductID");
-			var sMatName = oEvent.getSource().getSelectedItem().getBindingContext().getProperty("ProductName");
+			var oSelItem = oEvent.getSource().getSelectedItem().getBindingContext();
+			var sMatId = oSelItem.getProperty("ProductID");
+			var sMatName = oSelItem.getProperty("ProductName");
 			
 			this.getView().getModel("itemModel").setProperty("/MaterialID", sMatId);
 			this.getView().getModel("itemModel").setProperty("/MaterialDesc", sMatName);
