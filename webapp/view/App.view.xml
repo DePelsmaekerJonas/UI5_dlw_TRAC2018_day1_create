@@ -9,9 +9,9 @@
 						<f:content>
 							<Label text="{i18n>Common.Customer}"/>
 							<ComboBox
-								items="{/Customers}"
+								items="{customersModel>/ZV_ZVT18_CUSTM_JVN}"
 								change="onCustomerComboBoxChange">
-								<core:ListItem key="{CustomerID}" text="{CompanyName}" />
+								<core:ListItem key="{customersModel>CustomerNumber}" text="{customersModel>name}" />
 							</ComboBox>
 						</f:content>
 					</f:SimpleForm>
@@ -19,9 +19,9 @@
 						<f:content>
 							<Label text="{i18n>Common.Material}"/>
 							<ComboBox
-								items="{/Products}"
+								items="{/MaterialSet}"
 								change="onMaterialComboBoxChange">
-								<core:ListItem key="{ProductID}" text="{ProductName}" />
+								<core:ListItem key="{MaterialNumber}" text="{MaterialDescription}" />
 							</ComboBox>
 							<Label text="{i18n>Common.Quantity}"/>
 							<StepInput min="0" value="{itemModel>/Quantity}"/>

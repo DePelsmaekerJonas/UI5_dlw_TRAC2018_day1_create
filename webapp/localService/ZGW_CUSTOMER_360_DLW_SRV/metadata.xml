@@ -1,0 +1,59 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZGW_CUSTOMER_360_DLW_SRV" xml:lang="en" sap:schema-version="1">
+			<EntityType Name="Flight" sap:content-version="1">
+				<Key><PropertyRef Name="Airline"/><PropertyRef Name="FlightDate"/><PropertyRef Name="FlightNumber"/></Key><Property Name="Airline" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Airline"/><Property Name="FlightDate" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Date"/><Property Name="FlightNumber" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Flight Number"/><Property Name="Price" Type="Edm.Decimal" Precision="16" Scale="3" sap:unicode="false" sap:unit="Currency" sap:label="Airfare"/><Property Name="Currency" Type="Edm.String" MaxLength="5" sap:unicode="false" sap:label="Airline Currency" sap:semantics="currency-code"/><Property Name="PlaneType" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Plane Type"/><Property Name="MaxSeats" Type="Edm.Int32" sap:unicode="false" sap:label="Max. capacity econ."/></EntityType>
+			<EntityType Name="SalesOrganisation" sap:content-version="1">
+				<Key><PropertyRef Name="SalesOrganisationName"/></Key><Property Name="SalesOrganisationName" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Sales Org."/><Property Name="SalesOrganisationDescription" Type="Edm.String" MaxLength="20" sap:unicode="false" sap:label="Description"/></EntityType>
+			<EntityType Name="Material" sap:content-version="1">
+				<Key><PropertyRef Name="MaterialNumber"/></Key><Property Name="MaterialNumber" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material"/><Property Name="MaterialDescription" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Description"/></EntityType>
+			<EntityType Name="Order" sap:content-version="1">
+				<Key><PropertyRef Name="SalesDocument"/></Key><Property Name="SalesDocument" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="SD Document"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="DocType" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Sales doc. type"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="SalesOrg" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Sales Org." sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="DistrChannel" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Distr. Channel"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Division" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Division" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="NetValue" Type="Edm.Decimal" Nullable="false" Precision="16" Scale="3" sap:unicode="false" sap:label="Net Value"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Currency" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Doc. currency"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/><Property Name="CreatedBy" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Created By"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="CreatedOn" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Created on"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><NavigationProperty Name="NavOrderItems" Relationship="ZGW_CUSTOMER_360_DLW_SRV.AssOrderOrderItem" FromRole="FromRole_AssOrderOrderItem"
+					ToRole="ToRole_AssOrderOrderItem"/><NavigationProperty Name="NavOrderPartners" Relationship="ZGW_CUSTOMER_360_DLW_SRV.AssOrderOrderPartner"
+					FromRole="FromRole_AssOrderOrderPartner" ToRole="ToRole_AssOrderOrderPartner"/></EntityType>
+			<EntityType Name="OrderItem" sap:content-version="1">
+				<Key><PropertyRef Name="SalesDocument"/><PropertyRef Name="ItemNumber"/></Key><Property Name="SalesDocument" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="SD Document"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ItemNumber" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="Item" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="MaterialNumber" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Material"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="OrderQuantity" Type="Edm.Decimal" Nullable="false" Precision="15" Scale="3" sap:unicode="false" sap:label="Order quantity"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="TargetUOM" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Target ISO UoM"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ItemCategory" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Item category"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="OrderPartner" sap:content-version="1">
+				<Key><PropertyRef Name="SalesDocument"/><PropertyRef Name="PartnerRole"/></Key><Property Name="SalesDocument" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="SD Document"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="PartnerRole" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Partner Functn"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="PartnerNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Customer"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<Association Name="AssOrderOrderPartner" sap:content-version="1"><End Type="ZGW_CUSTOMER_360_DLW_SRV.Order" Multiplicity="1" Role="FromRole_AssOrderOrderPartner"/><End Type="ZGW_CUSTOMER_360_DLW_SRV.OrderPartner" Multiplicity="*" Role="ToRole_AssOrderOrderPartner"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_AssOrderOrderPartner"><PropertyRef Name="SalesDocument"/></Principal>
+					<Dependent Role="ToRole_AssOrderOrderPartner"><PropertyRef Name="SalesDocument"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="AssOrderOrderItem" sap:content-version="1"><End Type="ZGW_CUSTOMER_360_DLW_SRV.Order" Multiplicity="1" Role="FromRole_AssOrderOrderItem"/><End Type="ZGW_CUSTOMER_360_DLW_SRV.OrderItem" Multiplicity="*" Role="ToRole_AssOrderOrderItem"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_AssOrderOrderItem"><PropertyRef Name="SalesDocument"/></Principal>
+					<Dependent Role="ToRole_AssOrderOrderItem"><PropertyRef Name="SalesDocument"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<EntityContainer Name="ZGW_CUSTOMER_360_DLW_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="FlightSet" EntityType="ZGW_CUSTOMER_360_DLW_SRV.Flight" sap:content-version="1"/><EntitySet Name="SalesOrganisationSet" EntityType="ZGW_CUSTOMER_360_DLW_SRV.SalesOrganisation" sap:content-version="1"/><EntitySet Name="MaterialSet" EntityType="ZGW_CUSTOMER_360_DLW_SRV.Material" sap:content-version="1"/><EntitySet Name="OrderSet" EntityType="ZGW_CUSTOMER_360_DLW_SRV.Order" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:content-version="1"/><EntitySet Name="OrderItemSet" EntityType="ZGW_CUSTOMER_360_DLW_SRV.OrderItem" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="OrderPartnerSet" EntityType="ZGW_CUSTOMER_360_DLW_SRV.OrderPartner" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+				<AssociationSet Name="AssOrderOrderPartnerSet" Association="ZGW_CUSTOMER_360_DLW_SRV.AssOrderOrderPartner" sap:creatable="false"
+					sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="OrderSet" Role="FromRole_AssOrderOrderPartner"/><End EntitySet="OrderPartnerSet" Role="ToRole_AssOrderOrderPartner"/></AssociationSet>
+				<AssociationSet Name="AssOrderOrderItemSet" Association="ZGW_CUSTOMER_360_DLW_SRV.AssOrderOrderItem" sap:creatable="false"
+					sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="OrderSet" Role="FromRole_AssOrderOrderItem"/><End EntitySet="OrderItemSet" Role="ToRole_AssOrderOrderItem"/></AssociationSet>
+			</EntityContainer><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZGW_CUSTOMER_360_DLW_SRV/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZGW_CUSTOMER_360_DLW_SRV/$metadata"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

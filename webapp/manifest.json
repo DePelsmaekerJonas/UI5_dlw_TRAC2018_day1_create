@@ -21,6 +21,22 @@
 					"odataVersion": "2.0",
 					"localUri": "localService/metadata.xml"
 				}
+			},
+			"ZV_ZVT18_CUSTM_JVN_CDS": {
+				"uri": "/sap/opu/odata/sap/ZV_ZVT18_CUSTM_JVN_CDS/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/ZV_ZVT18_CUSTM_JVN_CDS/metadata.xml"
+				}
+			},
+			"ZGW_CUSTOMER_360_DLW_SRV": {
+				"uri": "/sap/opu/odata/sap/ZGW_CUSTOMER_360_DLW_SRV/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/ZGW_CUSTOMER_360_DLW_SRV/metadata.xml"
+				}
 			}
 		}
 	},
@@ -39,7 +55,10 @@
 			"tablet": true,
 			"phone": true
 		},
-		"supportedThemes": ["sap_hcb", "sap_belize"]
+		"supportedThemes": [
+			"sap_hcb",
+			"sap_belize"
+		]
 	},
 	"sap.ui5": {
 		"rootView": {
@@ -66,15 +85,14 @@
 				}
 			},
 			"": {
-				"uri": "/Northwind/V2/Northwind/Northwind.svc/",
+				"uri": "/sap/opu/odata/sap/ZGW_CUSTOMER_360_DLW_SRV/",
 				"type": "sap.ui.model.odata.v2.ODataModel",
 				"settings": {
 					"defaultOperationMode": "Server",
 					"defaultBindingMode": "OneWay",
-					"defaultCountMode": "Request",
-					"useBatch": false
+					"defaultCountMode": "Request"
 				},
-				"dataSource": "Northwind.svc",
+				"dataSource": "ZGW_CUSTOMER_360_DLW_SRV",
 				"preload": true
 			},
 			"itemModel": {
@@ -91,12 +109,25 @@
 				"type": "sap.ui.model.json.JSONModel",
 				"settings": {},
 				"preload": false
+			},
+			"customersModel": {
+				"uri": "/sap/opu/odata/sap/ZV_ZVT18_CUSTM_JVN_CDS/",
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "ZV_ZVT18_CUSTM_JVN_CDS",
+				"preload": true
 			}
 		},
 		"resources": {
-			"css": [{
-				"uri": "css/style.css"
-			}]
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
 		},
 		"routing": {
 			"config": {
@@ -108,11 +139,15 @@
 				"controlId": "idAppControl",
 				"clearControlAggregation": false
 			},
-			"routes": [{
-				"name": "RouteApp",
-				"pattern": "RouteApp",
-				"target": ["TargetApp"]
-			}],
+			"routes": [
+				{
+					"name": "RouteApp",
+					"pattern": "RouteApp",
+					"target": [
+						"TargetApp"
+					]
+				}
+			],
 			"targets": {
 				"TargetApp": {
 					"viewType": "XML",

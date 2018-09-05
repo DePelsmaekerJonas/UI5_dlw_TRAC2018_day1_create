@@ -23,14 +23,14 @@ sap.ui.define([
 		},
 		
 		onCustomerComboBoxChange: function(oEvent){
-			var sCustId = oEvent.getSource().getSelectedItem().getBindingContext().getProperty("CustomerID");
+			var sCustId = oEvent.getSource().getSelectedItem().getBindingContext("customersModel").getProperty("CustomerNumber");
 			this.getView().getModel("customerModel").setProperty("/CustomerID", sCustId);
 		},
 		
 		onMaterialComboBoxChange: function(oEvent){
 			var oSelItem = oEvent.getSource().getSelectedItem().getBindingContext();
-			var sMatId = oSelItem.getProperty("ProductID");
-			var sMatName = oSelItem.getProperty("ProductName");
+			var sMatId = oSelItem.getProperty("MaterialNumber");
+			var sMatName = oSelItem.getProperty("MaterialDescription");
 			
 			this.getView().getModel("itemModel").setProperty("/MaterialID", sMatId);
 			this.getView().getModel("itemModel").setProperty("/MaterialDesc", sMatName);
@@ -44,7 +44,7 @@ sap.ui.define([
 			
 			this.getView().getModel("itemsModel").getData().push({
 				"Item": oItemsModel.getData().length + 1,
-				"MaterialID": oItemModel.MaterialID,
+				"MaterialID": oItemModel.MaterialId,
 				"MaterialDesc": oItemModel.MaterialDesc,
 				"Quantity": oItemModel.Quantity
 			});

@@ -26,6 +26,15 @@
         "name": "Northwind"
       },
       "description": "Northwind"
+    },
+    {
+      "path": "/sap/opu/odata",
+      "target": {
+        "type": "destination",
+        "name": "DELAWARE_F4P_400",
+        "entryPath": "/sap/opu/odata"
+      },
+      "description": "Delaware F4P 400"
     }
   ],
   "sendWelcomeFileRedirect": true
